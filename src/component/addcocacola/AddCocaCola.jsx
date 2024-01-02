@@ -1,8 +1,6 @@
-import { data } from "autoprefixer";
-
+import Swal from 'sweetalert2';
 
 const AddCocaCola = () => {
-
   const handleAddCocacola = event => {
     event.preventDefault();
 
@@ -15,25 +13,38 @@ const AddCocaCola = () => {
     const category = form.category.value;
     const details = form.details.value;
     const photo = form.photo.value;
-    
-    const newCocacola = { name, quantity, supplier, taste, category, details, photo }
+
+    const newCocacola = {
+      name,
+      quantity,
+      supplier,
+      taste,
+      category,
+      details,
+      photo,
+    };
     console.log(newCocacola);
 
     fetch('http://localhost:5000/cocacola', {
       method: 'POST',
       headers: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
       },
-      body: JSON.stringify(newCocacola)
+      body: JSON.stringify(newCocacola),
     })
-      
-      
-    .then(res => res.json())
+      .then(res => res.json())
       .then(data => {
-      console.log(data);
-    })
-  }
-
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: 'success!',
+            text: 'User added successfully',
+            icon: 'success',
+            confirmButtonText: 'Cool',
+          });
+        }
+      });
+  };
 
   return (
     <div className="bg-red-50">
