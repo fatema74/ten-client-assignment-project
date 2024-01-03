@@ -1,9 +1,44 @@
 
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const CocaCard = ({ cocacola }) => {
-  
-  const { name, quantity, supplier, taste, category, details, photo, } = cocacola;
-  
+const CocaCard = ({ cocacola, cocacolas, setCocacolas }) => {
+  const { _id, name, quantity, supplier, taste, category, details, photo } =
+    cocacola;
+
+  const handleDelete = _id => {
+    console.log(_id);
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!',
+    }).then(result => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/cocacola/${_id}`, {
+          method: 'DELETE',
+        })
+          .then(res => res.json())
+          .then(data => {
+            console.log(data);
+
+            if (data.deletedCount > 0) {
+              Swal.fire({
+                title: 'Deleted!',
+                text: 'Your cocacola has been deleted.',
+                icon: 'success',
+              });
+              const remaining = cocacolas.filter(coca => coca._id !== _id);
+              setCocacolas(remaining);
+            }
+          });
+      }
+    });
+  };
 
   return (
     <div>
@@ -30,12 +65,17 @@ const CocaCard = ({ cocacola }) => {
               <span className="font-semibold">Details:</span> {details}
             </p>
           </div>
-          <div className="card-actions justify-end">
-            <div className="btn-group btn-group-vertical">
-              <button className="btn btn-active">Info</button>
-              <button className="btn">Success</button>
-              <button className="btn">Warning</button>
-            </div>
+          <div className="card-actions justify-end ">
+            <button className="btn bg-red-300">View</button>
+            <Link to={`updatecocacola/${_id}`}>
+              <button className="btn bg-orange-400">Edit</button>
+            </Link>
+            <button
+              onClick={() => handleDelete(_id)}
+              className="btn bg-red-600"
+            >
+              X
+            </button>
           </div>
         </div>
       </div>
