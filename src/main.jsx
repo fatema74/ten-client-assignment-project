@@ -5,6 +5,8 @@ import Home from './component/Home/Home';
 import AddCocaCola from './component/addcocacola/AddCocaCola';
 import UpdateCocaCola from './component/updatecocacola/UpdateCocaCola';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import SignUp from './component/signup/SignUp';
+import SignIn from './component/signup/SignIn';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +23,14 @@ const router = createBrowserRouter([
     element: <UpdateCocaCola></UpdateCocaCola>,
     loader: ({ params }) => fetch(`http://localhost:5000/cocacola/${params.id}`),
   },
+  {
+    path: '/signup',
+    element: <SignUp></SignUp>
+  },
+  {
+    path: '/signin',
+    element: <SignIn></SignIn>
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
