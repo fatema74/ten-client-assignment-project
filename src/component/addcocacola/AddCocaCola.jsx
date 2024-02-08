@@ -25,13 +25,16 @@ const AddCocaCola = () => {
     };
     console.log(newCocacola);
 
-    fetch('http://localhost:5000/cocacola', {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify(newCocacola),
-    })
+    fetch(
+      'https://ten-assignment-project-61qhs5ztk-kanis-fatemas-projects.vercel.app/cocacola',
+      {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(newCocacola),
+      }
+    )
       .then(res => res.json())
       .then(data => {
         console.log(data);

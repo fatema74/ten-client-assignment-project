@@ -12,7 +12,7 @@ const Home = () => {
 
   return (
     <div>
-      <h2 className="text-5xl text-center font-bold py-6">
+      <h2 className="text-5xl text-center font-bold pb-16">
         Cocacola item: {cocacolas.length}
       </h2>
 

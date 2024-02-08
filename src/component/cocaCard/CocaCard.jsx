@@ -19,9 +19,12 @@ const CocaCard = ({ cocacola, cocacolas, setCocacolas }) => {
       confirmButtonText: 'Yes, delete it!',
     }).then(result => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/cocacola/${_id}`, {
-          method: 'DELETE',
-        })
+        fetch(
+          `https://ten-assignment-project-61qhs5ztk-kanis-fatemas-projects.vercel.app/cocacola/${_id}`,
+          {
+            method: 'DELETE',
+          }
+        )
           .then(res => res.json())
           .then(data => {
             console.log(data);

@@ -31,13 +31,16 @@ const UpdateCocaCola = () => {
     };
     console.log(updateCocacola);
 
-    fetch(`http://localhost:5000/cocacola/${_id}`, {
-      method: 'PUT',
-      headers: {
-        'content-type': 'application/json',
-      },
-      body: JSON.stringify(updateCocacola),
-    })
+    fetch(
+      `https://ten-assignment-project-61qhs5ztk-kanis-fatemas-projects.vercel.app/cocacola/${_id}`,
+      {
+        method: 'PUT',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(updateCocacola),
+      }
+    )
       .then(res => res.json())
       .then(data => {
         console.log(data);
