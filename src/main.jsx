@@ -8,9 +8,10 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import SignUp from './component/signup/SignUp';
 import SignIn from './component/signup/SignIn';
 import MainLayout from './component/LayOut/MainLayout';
-import About from './component/About/About';
 import Authprovider from './component/Authprovider/Authprovider';
 import User from './component/signup/User';
+import Details from './component/BrandCard/Details';
+
 
 const router = createBrowserRouter([
   {
@@ -20,14 +21,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: () =>
-          fetch(
-            'https://ten-assignment-project-61qhs5ztk-kanis-fatemas-projects.vercel.app/cocacola'
-          ),
-      },
-      {
-        path: '/about',
-        element: <About></About>,
+        loader: () => fetch('http://localhost:5000/cocacola'),
       },
       {
         path: 'addcocacola',
@@ -37,25 +31,25 @@ const router = createBrowserRouter([
         path: 'updatecocacola/:id',
         element: <UpdateCocaCola></UpdateCocaCola>,
         loader: ({ params }) =>
-          fetch(
-            `https://ten-assignment-project-61qhs5ztk-kanis-fatemas-projects.vercel.app/cocacola/${params.id}`
-          ),
+          fetch(`http://localhost:5000/cocacola/${params.id}`),
       },
       {
         path: '/signup',
         element: <SignUp></SignUp>,
       },
       {
-        path: '/signin',
+        path: '/login',
         element: <SignIn></SignIn>,
       },
       {
         path: '/users',
         element: <User></User>,
-        loader: () =>
-          fetch(
-            'https://ten-assignment-project-61qhs5ztk-kanis-fatemas-projects.vercel.app/user'
-          ),
+        loader: () => fetch('http://localhost:5000/user'),
+      },
+      {
+        path: '/details/:id',
+        element: <Details></Details>,
+        loader: () => fetch('http://localhost:5000/cocacola'),
       },
     ],
   },

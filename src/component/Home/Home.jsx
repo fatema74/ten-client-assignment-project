@@ -12,13 +12,16 @@ const Home = () => {
 
   return (
     <div>
-      <h2 className="text-5xl text-center font-bold pb-16">
-        Cocacola item: {cocacolas.length}
-      </h2>
+      <h2 className="text-5xl text-center font-bold pb-16">Coca-Cola Brand</h2>
 
-      <div className="grid md:grid-cols-2 px-10 gap-6">
+      <div className="grid md:grid-cols-2 gap-6">
         {cocacolas.map(cocacola => (
-          <CocaCard key={cocacola._id} cocacola={cocacola} cocacolas={cocacolas} setCocacolas={setCocacolas}></CocaCard>
+          <CocaCard
+            key={cocacola._id}
+            cocacola={cocacola}
+            cocacolas={cocacolas}
+            setCocacolas={setCocacolas}
+          ></CocaCard>
         ))}
       </div>
     </div>

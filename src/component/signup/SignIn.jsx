@@ -20,21 +20,20 @@ const SignIn = () => {
         const user = {
           email,
           lastLoggedAt: result.user?.metadata?.lastSignInTime
-        };
-        fetch(
-          'https://ten-assignment-project-61qhs5ztk-kanis-fatemas-projects.vercel.app/user',
-          {
-            method: 'PATCH',
-            headers: {
-              'content-type': 'application/json',
-            },
-            body: JSON.stringify(user),
-          }
-        )
-          .then(res => res.json())
-          .then(data => {
-            console.log(data);
-          });
+        }
+
+        
+        fetch('http://localhost:5000/user', {
+          method: 'PATCH',
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+      .then(data => {
+      console.log(data);
+    })
       })
     .catch(error =>{console.error(error);})
   }
@@ -43,7 +42,7 @@ const SignIn = () => {
 
   return (
     <div>
-      <h1 className="text-5xl text-center font-bold my-10">SignIn Now!</h1>
+      <h1 className="text-5xl text-center font-bold my-10">LoginIn Now!</h1>
       <div className="mx-auto shrink-0 lg:w-1/2 md:w-3/4 shadow-2xl bg-base-100">
         <form onSubmit={handleSingin} className="card-body">
           <div className="form-control">

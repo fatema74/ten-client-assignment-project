@@ -11,21 +11,18 @@ const User = () => {
   const [users, setUsers] = useState(loadedUsers);
 
   const handleDelete = id => {
-    fetch(
-      `https://ten-assignment-project-61qhs5ztk-kanis-fatemas-projects.vercel.app/${id}`,
-      {
-        method: 'DELETE',
-      }
-    )
-      .then(res => res.json())
+    fetch(`http://localhost:5000/user/${id}`, {
+      method: 'DELETE'
+    })
+    .then(res => res.json())
       .then(data => {
         if (data.deletedCount > 0) {
           console.log('deleted successfuly');
-
+          
           const remainingUsers = users.filter(user => user._id !== id);
           setUsers(remainingUsers);
-        }
-      });
+      }
+    })
   }
 
   return (

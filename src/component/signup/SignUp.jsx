@@ -24,22 +24,19 @@ const SignUp = () => {
 
 
         const user = { email, createdAt: createdAt };
-        fetch(
-          'https://ten-assignment-project-61qhs5ztk-kanis-fatemas-projects.vercel.app/user',
-          {
-            method: 'POST',
-            headers: {
-              'content-type': 'application/json',
-            },
-            body: JSON.stringify(user),
-          }
-        )
-          .then(res => res.json())
+        fetch('http://localhost:5000/user', {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(user)
+        })
+        .then(res => res.json())
           .then(data => {
             if (data.insertedId) {
-              console.log('user added to a datab?.');
-            }
-          });
+            console.log('user added to a datab?.');
+          }
+        })
       })
     .catch(err=>{console.log(err)})
 

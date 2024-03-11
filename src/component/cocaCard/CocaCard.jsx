@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const CocaCard = ({ cocacola, cocacolas, setCocacolas }) => {
-  const { _id, name, quantity, supplier, taste, category, details, photo } =
+  const { _id, name, brand, type, price, rating, massege, photo } =
     cocacola;
 
   const handleDelete = _id => {
@@ -19,12 +19,9 @@ const CocaCard = ({ cocacola, cocacolas, setCocacolas }) => {
       confirmButtonText: 'Yes, delete it!',
     }).then(result => {
       if (result.isConfirmed) {
-        fetch(
-          `https://ten-assignment-project-61qhs5ztk-kanis-fatemas-projects.vercel.app/cocacola/${_id}`,
-          {
-            method: 'DELETE',
-          }
-        )
+        fetch(`http://localhost:5000/cocacola/${_id}`, {
+          method: 'DELETE',
+        })
           .then(res => res.json())
           .then(data => {
             console.log(data);
@@ -45,31 +42,36 @@ const CocaCard = ({ cocacola, cocacolas, setCocacolas }) => {
 
   return (
     <div>
-      <div className="card card-side bg-base-100 shadow-xl">
+      <div className="card card-compact bg-base-100 shadow-xl">
         <figure>
-          <img src={photo} alt="Movie" className="h-96 w-72" />
+          <img src={photo} alt="Movie" className="h-96 w-full" />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">Name: {name}</h2>
-          <div className="text-xl">
-            <p className="pb-3">
-              <span className="font-semibold">Quantity:</span> {quantity}
-            </p>
-            <p className="pb-3">
-              <span className="font-semibold">Supplier</span> Md: {supplier}
-            </p>
-            <p className="pb-3">
-              <span className="font-semibold">Taste:</span> {taste}
-            </p>
-            <p className="pb-3">
-              <span className="font-semibold">Category:</span> {category}
-            </p>
-            <p className="pb-3">
-              <span className="font-semibold">Details:</span> {details}
-            </p>
+          <div className="">
+            <div className="py-3">
+              <h2 className="text-3xl font-semibold">Brand Name: {brand}</h2>
+            </div>
+            <div>
+              <h4 className="text-2xl font-semibold">Name: {name}</h4>
+            </div>
+            <div className="py-3 text-xl font-semibold">
+              <p>Type: {type}</p>
+            </div>
+            <div className="flex justify-between text-xl font-semibold text-red-400">
+              <p>Price: {price}</p>
+              <p>Rating: {rating}</p>
+            </div>
+            <div className="text-xl">
+              <p className="py-3">
+                <span className="font-semibold">Short Massege: </span>
+                {massege}
+              </p>
+            </div>
           </div>
-          <div className="card-actions justify-end ">
-            <button className="btn bg-red-300">View</button>
+          <div className="card-actions justify-center">
+            <Link to={`details/${_id}`}>
+              <button className="btn bg-red-300">View</button>
+            </Link>
             <Link to={`updatecocacola/${_id}`}>
               <button className="btn bg-orange-400">Edit</button>
             </Link>

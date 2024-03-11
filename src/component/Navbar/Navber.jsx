@@ -10,7 +10,7 @@ const Navber = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/addcocacola">AddCocaCola</NavLink>
+        <NavLink to="/addcocacola">AddBrand</NavLink>
       </li>
       <li>
         <NavLink to="/signup">SignUp</NavLink>
@@ -51,15 +51,15 @@ const Navber = () => {
             </ul>
           </div>
           <a className="text-5xl font-bold">
-            Cocaco<span className="text-red-400">l</span>a
+            Bran<span className="text-red-400">dS</span>hop
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navLink}</ul>
         </div>
         <div className="navbar-end">
-          <Link to="/signin">
-            <button className="btn">Singin</button>
+          <Link to="/login">
+            <button className="btn">Login</button>
           </Link>
         </div>
       </div>
