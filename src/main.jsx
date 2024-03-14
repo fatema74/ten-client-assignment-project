@@ -11,6 +11,7 @@ import MainLayout from './component/LayOut/MainLayout';
 import Authprovider from './component/Authprovider/Authprovider';
 import User from './component/signup/User';
 import Details from './component/BrandCard/Details';
+import PriveteRoute from './component/PriveteRoute/PriveteRoute';
 
 
 const router = createBrowserRouter([
@@ -48,7 +49,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/details/:id',
-        element: <Details></Details>,
+        element: (
+          <PriveteRoute>
+            <Details></Details>
+          </PriveteRoute>
+        ),
         loader: () => fetch('http://localhost:5000/cocacola'),
       },
     ],

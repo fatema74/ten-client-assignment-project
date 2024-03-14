@@ -10,9 +10,10 @@ const SignUp = () => {
 
     const form = e.target;
 
+    const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    console.log(name, email, password);
 
 
     creatUser(email, password)
@@ -47,6 +48,18 @@ const SignUp = () => {
       <h1 className="text-5xl text-center font-bold my-10">SignUp Now!</h1>
       <div className="mx-auto shrink-0 lg:w-1/2 md:w-3/4 shadow-2xl bg-base-100">
         <form onSubmit={handleSingup} className="card-body">
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Name</span>
+            </label>
+            <input
+              type="text"
+              name="name"
+              placeholder="name"
+              className="input input-bordered"
+              required
+            />
+          </div>
           <div className="form-control">
             <label className="label">
               <span className="label-text">Email</span>

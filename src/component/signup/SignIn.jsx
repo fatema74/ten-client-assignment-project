@@ -1,11 +1,23 @@
 import { useContext } from "react";
 import { AuthContext } from "../Authprovider/Authprovider";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 
 
 
 const SignIn = () => {
-  const { singInUser } = useContext(AuthContext);
+  const { singInUser, googleLogin } = useContext(AuthContext);
+
+  const handleSocialLogin = (media) => {
+    media()
+      .then(res => console.log(res))
+    .catch(error=>console.log(error))
+  }
+
+  const location = useLocation()
+  console.log(location);
+
+  const navigate = useNavigate()
 
   const handleSingin = e => {
     e.preventDefault();
@@ -17,6 +29,7 @@ const SignIn = () => {
     singInUser(email, password)
       .then(result => {
         console.log(result.user);
+
         const user = {
           email,
           lastLoggedAt: result.user?.metadata?.lastSignInTime
@@ -33,7 +46,8 @@ const SignIn = () => {
         .then(res => res.json())
       .then(data => {
       console.log(data);
-    })
+      })
+        navigate(location?.state ? location.state : "/");
       })
     .catch(error =>{console.error(error);})
   }
@@ -76,6 +90,22 @@ const SignIn = () => {
           </div>
           <div className="form-control mt-6">
             <button className="btn btn-primary">Sing In</button>
+          </div>
+
+          <div className="">
+            <span className="divider font-bold my-6">Continue With</span>
+          </div>
+
+          <div className="flex justify-between">
+            <button
+              onClick={() => handleSocialLogin(googleLogin)}
+              className="btn"
+            >
+              Google Loing
+            </button>
+            <Link to="/signup">
+              <button className="btn">Sign Up</button>
+            </Link>
           </div>
         </form>
       </div>

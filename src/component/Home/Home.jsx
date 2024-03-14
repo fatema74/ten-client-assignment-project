@@ -6,8 +6,10 @@ import { useState } from "react";
 const Home = () => {
 
   const loadedCocacolas = useLoaderData();
+  console.log(loadedCocacolas);
 
   const [cocacolas, setCocacolas] = useState(loadedCocacolas)
+
 
 
   return (
@@ -15,7 +17,8 @@ const Home = () => {
       <h2 className="text-5xl text-center font-bold pb-16">Coca-Cola Brand</h2>
 
       <div className="grid md:grid-cols-2 gap-6">
-        {cocacolas.map(cocacola => (
+
+        {cocacolas.length >0 && cocacolas?.map(cocacola => (
           <CocaCard
             key={cocacola._id}
             cocacola={cocacola}

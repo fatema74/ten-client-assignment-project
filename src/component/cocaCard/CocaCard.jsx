@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const CocaCard = ({ cocacola, cocacolas, setCocacolas }) => {
+  
   const { _id, name, brand, type, price, rating, massege, photo } =
     cocacola;
 
@@ -17,7 +18,8 @@ const CocaCard = ({ cocacola, cocacolas, setCocacolas }) => {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!',
-    }).then(result => {
+    })
+      .then(result => {
       if (result.isConfirmed) {
         fetch(`http://localhost:5000/cocacola/${_id}`, {
           method: 'DELETE',
