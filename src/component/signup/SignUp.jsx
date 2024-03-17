@@ -1,6 +1,5 @@
-import { useContext } from "react";
-import { AuthContext } from "../Authprovider/Authprovider";
-
+import { useContext } from 'react';
+import { AuthContext } from '../Authprovider/Authprovider';
 
 const SignUp = () => {
   const { creatUser } = useContext(AuthContext);
@@ -15,34 +14,31 @@ const SignUp = () => {
     const password = form.password.value;
     console.log(name, email, password);
 
-
     creatUser(email, password)
-      .then(result =>
-      {
-        console.log(result.user)
+      .then(result => {
+        console.log(result.user);
 
         const createdAt = result.user?.metadata?.creationTime;
-
 
         const user = { email, createdAt: createdAt };
         fetch('http://localhost:5000/user', {
           method: 'POST',
           headers: {
-            'content-type': 'application/json'
+            'content-type': 'application/json',
           },
-          body: JSON.stringify(user)
+          body: JSON.stringify(user),
         })
-        .then(res => res.json())
+          .then(res => res.json())
           .then(data => {
             if (data.insertedId) {
-            console.log('user added to a datab?.');
-          }
-        })
+              console.log('user added to a datab?.');
+            }
+          });
       })
-    .catch(err=>{console.log(err)})
-
-
-  }
+      .catch(err => {
+        console.log(err);
+      });
+  };
   return (
     <div>
       <h1 className="text-5xl text-center font-bold my-10">SignUp Now!</h1>

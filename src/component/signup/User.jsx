@@ -1,13 +1,8 @@
-
-
-import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
-import Swal from "sweetalert2";
-
+import { useState } from 'react';
+import { useLoaderData } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const User = () => {
-
-
   const loadedUsers = useLoaderData();
 
   const [users, setUsers] = useState(loadedUsers);
@@ -22,9 +17,8 @@ const User = () => {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!',
-    })
-      .then(result => {
-        if (result.isConfirmed) {
+    }).then(result => {
+      if (result.isConfirmed) {
         fetch(`http://localhost:5000/user/${id}`, {
           method: 'DELETE',
         })
@@ -42,11 +36,8 @@ const User = () => {
             }
           });
       }
-    })
-
-    
-    
-  }
+    });
+  };
 
   return (
     <div>

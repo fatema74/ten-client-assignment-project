@@ -1,23 +1,20 @@
-import { useContext } from "react";
-import { AuthContext } from "../Authprovider/Authprovider";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-
-
-
+import { useContext } from 'react';
+import { AuthContext } from '../Authprovider/Authprovider';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const SignIn = () => {
   const { singInUser, googleLogin } = useContext(AuthContext);
 
-  const handleSocialLogin = (media) => {
+  const handleSocialLogin = media => {
     media()
       .then(res => console.log(res))
-    .catch(error=>console.log(error))
-  }
+      .catch(error => console.log(error));
+  };
 
-  const location = useLocation()
+  const location = useLocation();
   console.log(location);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSingin = e => {
     e.preventDefault();
@@ -32,27 +29,26 @@ const SignIn = () => {
 
         const user = {
           email,
-          lastLoggedAt: result.user?.metadata?.lastSignInTime
-        }
+          lastLoggedAt: result.user?.metadata?.lastSignInTime,
+        };
 
-        
-        fetch('http://localhost:5000/user', {
+        fetch('http://localhost:5000//user', {
           method: 'PATCH',
           headers: {
-            'content-type': 'application/json'
+            'content-type': 'application/json',
           },
-          body: JSON.stringify(user)
+          body: JSON.stringify(user),
         })
-        .then(res => res.json())
-      .then(data => {
-      console.log(data);
+          .then(res => res.json())
+          .then(data => {
+            console.log(data);
+          });
+        navigate(location?.state ? location.state : '/');
       })
-        navigate(location?.state ? location.state : "/");
-      })
-    .catch(error =>{console.error(error);})
-  }
-
-
+      .catch(error => {
+        console.error(error);
+      });
+  };
 
   return (
     <div>

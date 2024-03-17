@@ -1,12 +1,11 @@
-import { useLoaderData } from "react-router-dom";
-import Swal from "sweetalert2";
-
+import { useLoaderData } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const UpdateCocaCola = () => {
   const cocacola = useLoaderData();
 
   const { _id, name, brand, photo, type, rating, price, massege } = cocacola;
-  
+
   const handleUpdateCocacola = event => {
     event.preventDefault();
 
@@ -51,7 +50,7 @@ const UpdateCocaCola = () => {
         }
       });
   };
-  
+
   return (
     <div className="bg-red-50">
       <h2 className="text-5xl text-center font-bold pt-5">

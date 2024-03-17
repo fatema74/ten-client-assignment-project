@@ -1,6 +1,6 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import './index.css'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
 import Home from './component/Home/Home';
 import AddCocaCola from './component/addcocacola/AddCocaCola';
 import UpdateCocaCola from './component/updatecocacola/UpdateCocaCola';
@@ -12,7 +12,6 @@ import Authprovider from './component/Authprovider/Authprovider';
 import User from './component/signup/User';
 import Details from './component/BrandCard/Details';
 import PriveteRoute from './component/PriveteRoute/PriveteRoute';
-
 
 const router = createBrowserRouter([
   {

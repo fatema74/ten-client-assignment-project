@@ -46,7 +46,9 @@ const AddCocaCola = () => {
 
   return (
     <div className="bg-red-50">
-      <h2 className="text-5xl text-center font-bold pt-5">Add Coca-Cola Brand</h2>
+      <h2 className="text-5xl text-center font-bold pt-5">
+        Add Coca-Cola Brand
+      </h2>
       <form onSubmit={handleAddCocacola} className="px-32 py-10">
         {/* one row */}
         <div className="md:flex gap-10 pt-6">
