@@ -19,7 +19,7 @@ const User = () => {
       confirmButtonText: 'Yes, delete it!',
     }).then(result => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/user/${id}`, {
+        fetch(`https://git-remote-rm-origin-et2f.onrender.com/user/${id}`, {
           method: 'DELETE',
         })
           .then(res => res.json())
@@ -42,7 +42,7 @@ const User = () => {
   return (
     <div>
       <h2 className="text-5xl font-bold text-center mb-10">
-        Users: {loadedUsers.length}
+        Users
       </h2>
       <div className="overflow-x-auto">
         <table className="table">

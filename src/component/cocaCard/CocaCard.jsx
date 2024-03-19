@@ -17,7 +17,7 @@ const CocaCard = ({ cocacola, cocacolas, setCocacolas }) => {
       confirmButtonText: 'Yes, delete it!',
     }).then(result => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/cocacola/${_id}`, {
+        fetch(`https://git-remote-rm-origin-et2f.onrender.com/cocacola/${_id}`, {
           method: 'DELETE',
         })
           .then(res => res.json())

@@ -21,17 +21,20 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/cocacola'),
+        loader: () =>
+          fetch('https://git-remote-rm-origin-et2f.onrender.com/cocacola'),
       },
       {
-        path: 'addcocacola',
+        path: '/addcocacola',
         element: <AddCocaCola></AddCocaCola>,
       },
       {
-        path: 'updatecocacola/:id',
+        path: '/updatecocacola/:id',
         element: <UpdateCocaCola></UpdateCocaCola>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/cocacola/${params.id}`),
+          fetch(
+            `https://git-remote-rm-origin-et2f.onrender.com/cocacola/${params.id}`
+          ),
       },
       {
         path: '/signup',
@@ -44,7 +47,8 @@ const router = createBrowserRouter([
       {
         path: '/users',
         element: <User></User>,
-        loader: () => fetch('http://localhost:5000/user'),
+        loader: () =>
+          fetch('https://git-remote-rm-origin-et2f.onrender.com/user'),
       },
       {
         path: '/details/:id',
@@ -53,7 +57,8 @@ const router = createBrowserRouter([
             <Details></Details>
           </PriveteRoute>
         ),
-        loader: () => fetch('http://localhost:5000/cocacola'),
+        loader: () =>
+          fetch('https://git-remote-rm-origin-et2f.onrender.com/cocacola'),
       },
     ],
   },

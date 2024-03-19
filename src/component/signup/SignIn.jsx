@@ -32,7 +32,7 @@ const SignIn = () => {
           lastLoggedAt: result.user?.metadata?.lastSignInTime,
         };
 
-        fetch('http://localhost:5000//user', {
+        fetch('https://git-remote-rm-origin-et2f.onrender.com/user', {
           method: 'PATCH',
           headers: {
             'content-type': 'application/json',

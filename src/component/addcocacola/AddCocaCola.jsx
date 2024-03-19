@@ -23,7 +23,7 @@ const AddCocaCola = () => {
     };
     console.log(newCocacola);
 
-    fetch('http://localhost:5000/cocacola', {
+    fetch('https://git-remote-rm-origin-et2f.onrender.com/cocacola', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',

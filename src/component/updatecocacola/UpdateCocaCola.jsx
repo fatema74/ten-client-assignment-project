@@ -30,7 +30,7 @@ const UpdateCocaCola = () => {
     };
     console.log(updateCocacola);
 
-    fetch(`http://localhost:5000/cocacola/${_id}`, {
+    fetch(`https://git-remote-rm-origin-et2f.onrender.com/cocacola/${_id}`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json',
