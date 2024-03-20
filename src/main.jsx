@@ -26,7 +26,11 @@ const router = createBrowserRouter([
       },
       {
         path: '/addcocacola',
-        element: <AddCocaCola></AddCocaCola>,
+        element: (
+          <PriveteRoute>
+            <AddCocaCola></AddCocaCola>
+          </PriveteRoute>
+        ),
       },
       {
         path: '/updatecocacola/:id',
